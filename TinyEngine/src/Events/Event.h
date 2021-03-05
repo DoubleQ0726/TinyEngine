@@ -8,7 +8,7 @@ namespace TinyEngine
 		None = 0,
 		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
 		AppTick, AppUpdate, AppRender,
-		KeyPressed, KeyRelease,
+		KeyPressed, KeyReleased,
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
@@ -39,7 +39,6 @@ namespace TinyEngine
 		{
 			return GetCategoryFlags() & category;
 		}
-	protected:
 		bool m_Handle = false;
 	};
 

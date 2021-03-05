@@ -10,6 +10,12 @@ workspace "TinyEngine"
 
 outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+--Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "TinyEngine/vecdor/GLFW/include"
+
+include "TinyEngine/vecdor/GLFW"
+
 project "TinyEngine"
 	location "TinyEngine"
 	kind "SharedLib"
@@ -30,7 +36,14 @@ project "TinyEngine"
 	includedirs
 	{
 		"%{prj.name}/vecdor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

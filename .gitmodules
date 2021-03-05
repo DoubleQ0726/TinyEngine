@@ -1,3 +1,6 @@
 [submodule "TinyEngine/vecdor/spdlog"]
 	path = TinyEngine/vecdor/spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule ".\\TinyEngine\\vecdor\\GLFW"]
+	path = .\\TinyEngine\\vecdor\\GLFW
+	url = https://github.com/TheCherno/glfw.git

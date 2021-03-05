@@ -34,12 +34,26 @@ namespace TinyEngine
 		std::string ToString() const override
 		{
 			std::stringstream ss;
-			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << " repeats";
+			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << ")repeats";
+			return ss.str();
+		}
+	private:
+		int m_RepeatCount;
+	};
+
+	class TINY_API KeyReleasedEvent : public KeyEvent
+	{
+	public:
+		KeyReleasedEvent(const int keycode)
+			: KeyEvent(keycode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyReleasedEvent: " << m_KeyCode;
 			return ss.str();
 		}
 
-
-	private:
-		int m_RepeatCount;
+		EVENT_CLASS_TYPE(KeyReleased)
 	};
 }

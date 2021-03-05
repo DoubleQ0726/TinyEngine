@@ -35,6 +35,8 @@
       <Filter>Tiny</Filter>
     </ClInclude>
     <ClInclude Include="src\TinyPch.h" />
+    <ClInclude Include="src\Tiny\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Tiny\Application.cpp">
@@ -44,5 +46,6 @@
       <Filter>Tiny</Filter>
     </ClCompile>
     <ClCompile Include="src\TinyPch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>
