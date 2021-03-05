@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Filter Include="Events">
+      <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Tiny">
       <UniqueIdentifier>{A9EC8C7C-9523-8E0D-3E10-74102A260A0F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Events\ApplicationEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events\Event.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events\KeyEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Events\MouseEvent.h">
+      <Filter>Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Tiny.h" />
     <ClInclude Include="src\Tiny\Application.h">
       <Filter>Tiny</Filter>
@@ -19,6 +34,7 @@
     <ClInclude Include="src\Tiny\Log.h">
       <Filter>Tiny</Filter>
     </ClInclude>
+    <ClInclude Include="src\TinyPch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Tiny\Application.cpp">
@@ -27,5 +43,6 @@
     <ClCompile Include="src\Tiny\Log.cpp">
       <Filter>Tiny</Filter>
     </ClCompile>
+    <ClCompile Include="src\TinyPch.cpp" />
   </ItemGroup>
 </Project>

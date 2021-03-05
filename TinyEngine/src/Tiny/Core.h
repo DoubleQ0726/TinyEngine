@@ -10,3 +10,4 @@
 	#error Tiny only support Windows!
 #endif // TI_PLATFORM_WINDOWS
 
+#define BIT(x) (1 << x)

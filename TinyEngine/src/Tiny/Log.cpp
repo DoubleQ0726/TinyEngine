@@ -1,3 +1,4 @@
+#include "TinyPch.h"
 #include "Log.h"
 namespace TinyEngine
 {

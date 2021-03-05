@@ -18,6 +18,9 @@ project "TinyEngine"
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
 
+	pchheader "TinyPch.h"
+	pchsource "TinyEngine/src/TinyPch.cpp"
+
 	files
 	{
 		"%{prj.name}/src/**.h",
@@ -26,7 +29,8 @@ project "TinyEngine"
 
 	includedirs
 	{
-		"%{prj.name}/vecdor/spdlog/include"
+		"%{prj.name}/vecdor/spdlog/include",
+		"%{prj.name}/src"
 	}
 
 	filter "system:windows"
