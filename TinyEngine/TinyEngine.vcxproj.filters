@@ -4,6 +4,12 @@
     <Filter Include="Events">
       <UniqueIdentifier>{3A8963B1-262B-8E87-0FE6-A1DBFB2615D8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Tiny">
       <UniqueIdentifier>{A9EC8C7C-9523-8E0D-3E10-74102A260A0F}</UniqueIdentifier>
     </Filter>
@@ -21,6 +27,9 @@
     <ClInclude Include="src\Events\MouseEvent.h">
       <Filter>Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
     <ClInclude Include="src\Tiny.h" />
     <ClInclude Include="src\Tiny\Application.h">
       <Filter>Tiny</Filter>
@@ -31,21 +40,36 @@
     <ClInclude Include="src\Tiny\EntryPoint.h">
       <Filter>Tiny</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tiny\Layer.h">
+      <Filter>Tiny</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\LayerStack.h">
+      <Filter>Tiny</Filter>
+    </ClInclude>
     <ClInclude Include="src\Tiny\Log.h">
       <Filter>Tiny</Filter>
     </ClInclude>
+    <ClInclude Include="src\Tiny\Window.h">
+      <Filter>Tiny</Filter>
+    </ClInclude>
     <ClInclude Include="src\TinyPch.h" />
-    <ClInclude Include="src\Tiny\Window.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Tiny\Application.cpp">
+      <Filter>Tiny</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Layer.cpp">
+      <Filter>Tiny</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\LayerStack.cpp">
       <Filter>Tiny</Filter>
     </ClCompile>
     <ClCompile Include="src\Tiny\Log.cpp">
       <Filter>Tiny</Filter>
     </ClCompile>
     <ClCompile Include="src\TinyPch.cpp" />
-    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

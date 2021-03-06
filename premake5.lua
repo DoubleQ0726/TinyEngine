@@ -13,8 +13,10 @@ outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 --Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "TinyEngine/vecdor/GLFW/include"
+IncludeDir["Glad"] = "TinyEngine/vecdor/Glad/include"
 
 include "TinyEngine/vecdor/GLFW"
+include "TinyEngine/vecdor/Glad"
 
 project "TinyEngine"
 	location "TinyEngine"
@@ -37,12 +39,14 @@ project "TinyEngine"
 	{
 		"%{prj.name}/vecdor/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -64,14 +68,17 @@ project "TinyEngine"
 
 	filter "configurations:Debug"
 		defines "TI_DEGUB"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TI_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TI_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "SandBox"
@@ -111,12 +118,15 @@ project "SandBox"
 
 	filter "configurations:Debug"
 		defines "TI_DEGUB"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TI_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TI_DIST"
+		buildoptions "/MD"
 		optimize "On"
