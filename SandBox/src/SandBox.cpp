@@ -8,7 +8,7 @@ public:
 
 	void OnUpdate() override
 	{
-		TI_INFO("Exampler::Update");
+		//TI_INFO("Exampler::Update");
 	}
 
 	void OnEvent(TinyEngine::Event& e) override
@@ -23,6 +23,7 @@ public:
 	SandBox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverLay(new TinyEngine::ImGuiLayer());
 	}
 
 	~SandBox()

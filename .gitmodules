@@ -4,3 +4,6 @@
 [submodule ".\\TinyEngine\\vecdor\\GLFW"]
 	path = .\\TinyEngine\\vecdor\\GLFW
 	url = https://github.com/TheCherno/glfw.git
+[submodule ".\\TinyEngine\\vecdor\\imgui"]
+	path = .\\TinyEngine\\vecdor\\imgui
+	url = https://github.com/TheCherno/imgui.git

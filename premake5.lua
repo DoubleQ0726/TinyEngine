@@ -14,9 +14,11 @@ outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "TinyEngine/vecdor/GLFW/include"
 IncludeDir["Glad"] = "TinyEngine/vecdor/Glad/include"
+IncludeDir["ImGui"] = "TinyEngine/vecdor/imgui"
 
 include "TinyEngine/vecdor/GLFW"
 include "TinyEngine/vecdor/Glad"
+include "TinyEngine/vecdor/imgui"
 
 project "TinyEngine"
 	location "TinyEngine"
@@ -40,13 +42,15 @@ project "TinyEngine"
 		"%{prj.name}/vecdor/spdlog/include",
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.Glad}"
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links
 	{
 		"GLFW",
 		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
