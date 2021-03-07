@@ -1,5 +1,6 @@
 workspace "TinyEngine"
 	architecture "x64"
+	startproject "SandBox"
 
 	configurations
 	{
@@ -20,7 +21,6 @@ include "TinyEngine/vecdor/GLFW"
 include "TinyEngine/vecdor/Glad"
 include "TinyEngine/vecdor/imgui"
 
-startproject "SandBox"
 
 project "TinyEngine"
 	location "TinyEngine"
@@ -70,7 +70,7 @@ project "TinyEngine"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputDir .. "/SandBox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputDir .. "/SandBox/\"")
 		}
 
 	filter "configurations:Debug"

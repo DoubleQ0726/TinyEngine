@@ -4,6 +4,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include "imgui.h"
+#include "Platform/Windows/WindowsInput.h"
 namespace TinyEngine
 {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1) 
@@ -71,6 +72,9 @@ namespace TinyEngine
 			{
 				layer->OnUpdate();
 			}
+			auto[x, y] = WindowsInput::GetMousePosition();
+			TI_CORE_TRACE("{0}, {1}", x, y);
+
 			m_Window->OnUpdate();
 		}
 	}

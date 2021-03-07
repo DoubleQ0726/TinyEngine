@@ -8,7 +8,7 @@ public:
 
 	void OnUpdate() override
 	{
-		//TI_INFO("Exampler::Update");
+		TI_INFO("Exampler::Update");
 	}
 
 	void OnEvent(TinyEngine::Event& e) override

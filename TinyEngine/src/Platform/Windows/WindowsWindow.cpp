@@ -128,9 +128,9 @@ namespace TinyEngine
 
 		glfwSetScrollCallback(m_Window, [](GLFWwindow* window, double xOffset, double yOffset)
 		{
-				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-				MouseScrolledEvent event((float)xOffset, (float)yOffset);
-				data.EventCallBack(event);
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			MouseScrolledEvent event((float)xOffset, (float)yOffset);
+			data.EventCallBack(event);
 		});
 
 		glfwSetCursorPosCallback(m_Window, [](GLFWwindow* window, double xPos, double yPos) 

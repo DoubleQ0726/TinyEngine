@@ -65,6 +65,8 @@
       <Filter>Tiny</Filter>
     </ClInclude>
     <ClInclude Include="src\TinyPch.h" />
+    <ClInclude Include="src\Tiny\Input.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
@@ -89,5 +91,6 @@
       <Filter>Tiny</Filter>
     </ClCompile>
     <ClCompile Include="src\TinyPch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

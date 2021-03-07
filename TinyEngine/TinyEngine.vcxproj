@@ -93,7 +93,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\TinyEngine\TinyEngine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\TinyEngine\TinyEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\TinyEngine\TinyEngine.dll ..\bin\Debug-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\TinyEngine\TinyEngine.dll ..\bin\Debug-windows-x86_64\SandBox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\TinyEngine\TinyEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\TinyEngine\TinyEngine.dll "..\bin\Debug-windows-x86_64\SandBox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\TinyEngine\TinyEngine.dll "..\bin\Debug-windows-x86_64\SandBox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -119,7 +119,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\TinyEngine\TinyEngine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\TinyEngine\TinyEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\TinyEngine\TinyEngine.dll ..\bin\Release-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\TinyEngine\TinyEngine.dll ..\bin\Release-windows-x86_64\SandBox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\TinyEngine\TinyEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\TinyEngine\TinyEngine.dll "..\bin\Release-windows-x86_64\SandBox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\TinyEngine\TinyEngine.dll "..\bin\Release-windows-x86_64\SandBox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -145,7 +145,7 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\TinyEngine\TinyEngine.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\TinyEngine\TinyEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\TinyEngine\TinyEngine.dll ..\bin\Dist-windows-x86_64\SandBox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\TinyEngine\TinyEngine.dll ..\bin\Dist-windows-x86_64\SandBox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\TinyEngine\TinyEngine.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\TinyEngine\TinyEngine.dll "..\bin\Dist-windows-x86_64\SandBox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\TinyEngine\TinyEngine.dll "..\bin\Dist-windows-x86_64\SandBox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -155,11 +155,13 @@
     <ClInclude Include="src\Events\MouseEvent.h" />
     <ClInclude Include="src\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenender.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Tiny.h" />
     <ClInclude Include="src\Tiny\Application.h" />
     <ClInclude Include="src\Tiny\Core.h" />
     <ClInclude Include="src\Tiny\EntryPoint.h" />
+    <ClInclude Include="src\Tiny\Input.h" />
     <ClInclude Include="src\Tiny\Layer.h" />
     <ClInclude Include="src\Tiny\LayerStack.h" />
     <ClInclude Include="src\Tiny\Log.h" />
@@ -169,6 +171,7 @@
   <ItemGroup>
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenender.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Tiny\Application.cpp" />
     <ClCompile Include="src\Tiny\Layer.cpp" />
