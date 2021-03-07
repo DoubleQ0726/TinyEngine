@@ -10,7 +10,12 @@
 	#error Tiny only support Windows!
 #endif // TI_PLATFORM_WINDOWS
 
-#ifdef TI_ENABLE_ASSERTS
+#ifdef TI_DEBUG
+	#define  TI_ENABLE_ASSERTS
+#endif // TI_DEBUG
+
+
+#if TI_ENABLE_ASSERTS
 	#define TI_ASSERT(x, ...) { if (!(x)) { TI_ERROR("Assertion Failed: {0}", __VA__ARGS__); __debugbreak(); } }
 	#define TI__CORE_ASSERT(x, ...) { if (!(x)) { TI_CORE_ERROR("Assertion Failed: {0}", __VA__ARGS__); __debugbreak(); } }
 

@@ -20,10 +20,13 @@ include "TinyEngine/vecdor/GLFW"
 include "TinyEngine/vecdor/Glad"
 include "TinyEngine/vecdor/imgui"
 
+startproject "SandBox"
+
 project "TinyEngine"
 	location "TinyEngine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
@@ -56,7 +59,7 @@ project "TinyEngine"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		--staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -72,23 +75,24 @@ project "TinyEngine"
 
 	filter "configurations:Debug"
 		defines "TI_DEGUB"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TI_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TI_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "SandBox"
 	location "SandBox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "Off"
 
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
@@ -112,7 +116,7 @@ project "SandBox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		--staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -122,15 +126,15 @@ project "SandBox"
 
 	filter "configurations:Debug"
 		defines "TI_DEGUB"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "TI_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "TI_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
