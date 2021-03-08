@@ -1,6 +1,7 @@
 workspace "TinyEngine"
 	architecture "x64"
 	startproject "SandBox"
+	cppdialect "C++17"
 
 	configurations
 	{
@@ -25,9 +26,9 @@ include "TinyEngine/vecdor/imgui"
 
 project "TinyEngine"
 	location "TinyEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "Off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
@@ -62,8 +63,6 @@ project "TinyEngine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		--staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -72,31 +71,32 @@ project "TinyEngine"
 			"TI_BUILD_DLL"
 		}
 
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputDir .. "/SandBox/\"")
-		}
+		--postbuildcommands
+		--{
+			--("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputDir .. "/SandBox/\"")
+		--}
 
 	filter "configurations:Debug"
 		defines "TI_DEGUB"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "TI_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "TI_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "SandBox"
 	location "SandBox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "Off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputDir .. "/%{prj.name}")
@@ -121,8 +121,6 @@ project "SandBox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		--staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -133,14 +131,14 @@ project "SandBox"
 	filter "configurations:Debug"
 		defines "TI_DEGUB"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "TI_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "TI_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"

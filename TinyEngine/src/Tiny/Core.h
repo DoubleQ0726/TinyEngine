@@ -1,11 +1,15 @@
 #pragma once
 
 #ifdef TI_PLATFORM_WINDOWS
+#if TI_DYNAMIC_LINK
 	#ifdef TI_BUILD_DLL
 		#define TINY_API __declspec(dllexport)
 	#else
 		#define TINY_API __declspec(dllimport) 
 	#endif // TI_BUILD_DLL
+#else
+	#define TINY_API
+#endif
 #else
 	#error Tiny only support Windows!
 #endif // TI_PLATFORM_WINDOWS
