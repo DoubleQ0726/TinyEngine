@@ -147,6 +147,8 @@
     <ClInclude Include="src\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Renender\GraphicsContext.h" />
+    <ClInclude Include="src\Renender\OpenGLContext.h" />
     <ClInclude Include="src\Tiny.h" />
     <ClInclude Include="src\Tiny\Application.h" />
     <ClInclude Include="src\Tiny\Core.h" />
@@ -578,6 +580,7 @@
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\Renender\OpenGLContext.cpp" />
     <ClCompile Include="src\Tiny\Application.cpp" />
     <ClCompile Include="src\Tiny\Layer.cpp" />
     <ClCompile Include="src\Tiny\LayerStack.cpp" />

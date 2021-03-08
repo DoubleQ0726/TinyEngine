@@ -1,8 +1,8 @@
 #pragma once
 #include "Tiny/Window.h"
 #include "Tiny/Log.h"
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include "Renender/OpenGLContext.h"
 
 namespace TinyEngine
 {
@@ -29,7 +29,7 @@ namespace TinyEngine
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
-
+		GraphicsContext* m_Context;
 		struct WindowData
 		{
 			std::string Title;
