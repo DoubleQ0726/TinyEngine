@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "Events/ApplicationEvent.h"
 #include "Tiny/LayerStack.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace TinyEngine
 {
@@ -27,6 +28,7 @@ namespace TinyEngine
 
 	private:
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 

@@ -16,6 +16,8 @@ namespace TinyEngine
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
+		m_ImGuiLayer = new ImGuiLayer();
+		PushOverLay(m_ImGuiLayer);
 	}
 
 	Application::~Application()
@@ -46,7 +48,7 @@ namespace TinyEngine
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
-		TI_CORE_TRACE(e);
+		//TI_CORE_TRACE(e);
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();)
 		{
@@ -72,8 +74,13 @@ namespace TinyEngine
 			{
 				layer->OnUpdate();
 			}
-			auto[x, y] = WindowsInput::GetMousePosition();
-			TI_CORE_TRACE("{0}, {1}", x, y);
+
+			m_ImGuiLayer->Begin();
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnImGuiRender();
+			}
+			m_ImGuiLayer->End();
 
 			m_Window->OnUpdate();
 		}

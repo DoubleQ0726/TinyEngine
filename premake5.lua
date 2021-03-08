@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "TinyEngine/vecdor/GLFW/include"
 IncludeDir["Glad"] = "TinyEngine/vecdor/Glad/include"
 IncludeDir["ImGui"] = "TinyEngine/vecdor/imgui"
+IncludeDir["glm"] = "TinyEngine/vecdor/glm"
 
 include "TinyEngine/vecdor/GLFW"
 include "TinyEngine/vecdor/Glad"
@@ -37,7 +38,9 @@ project "TinyEngine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vecdor/glm/glm/**.hpp",
+		"%{prj.name}/vecdor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -46,7 +49,8 @@ project "TinyEngine"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -106,7 +110,9 @@ project "SandBox"
 	includedirs
 	{
 		"TinyEngine/vecdor/spdlog/include",
-		"TinyEngine/src"
+		"TinyEngine/vecdor/imgui",
+		"TinyEngine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

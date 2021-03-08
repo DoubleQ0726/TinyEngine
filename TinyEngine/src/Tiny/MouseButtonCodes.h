@@ -1,0 +1,14 @@
+#pragma once
+//From glfw3.h
+#define TINY_MOUSE_BUTTON_1         0
+#define TINY_MOUSE_BUTTON_2         1
+#define TINY_MOUSE_BUTTON_3         2
+#define TINY_MOUSE_BUTTON_4         3
+#define TINY_MOUSE_BUTTON_5         4
+#define TINY_MOUSE_BUTTON_6         5
+#define TINY_MOUSE_BUTTON_7         6
+#define TINY_MOUSE_BUTTON_8         7
+#define TINY_MOUSE_BUTTON_LAST      TINY_MOUSE_BUTTON_8
+#define TINY_MOUSE_BUTTON_LEFT      TINY_MOUSE_BUTTON_1
+#define TINY_MOUSE_BUTTON_RIGHT     TINY_MOUSE_BUTTON_2
+#define TINY_MOUSE_BUTTON_MIDDLE    TINY_MOUSE_BUTTON_3
