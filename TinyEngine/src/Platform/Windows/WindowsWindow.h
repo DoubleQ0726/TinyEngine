@@ -2,7 +2,7 @@
 #include "Tiny/Window.h"
 #include "Tiny/Log.h"
 #include <GLFW/glfw3.h>
-#include "Renender/OpenGLContext.h"
+#include "Renender/GraphicsContext.h"
 
 namespace TinyEngine
 {

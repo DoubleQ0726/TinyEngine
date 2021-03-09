@@ -1339,7 +1339,13 @@
       <Filter>vecdor\glm\glm</Filter>
     </ClInclude>
     <ClInclude Include="src\Renender\GraphicsContext.h" />
-    <ClInclude Include="src\Renender\OpenGLContext.h" />
+    <ClInclude Include="src\Renender\Shader.h" />
+    <ClInclude Include="src\Renender\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Renender\Renderer.h" />
+    <ClInclude Include="src\Renender\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ImGui\ImGuiBuild.cpp">
@@ -1369,6 +1375,16 @@
     <ClCompile Include="src\TinyPch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\OpenGLContext.cpp" />
+    <ClCompile Include="src\Renender\Shader.cpp" />
+    <ClCompile Include="src\Renender\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Renender\Renderer.cpp" />
+    <ClCompile Include="src\Renender\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\ShaderB.shader" />
   </ItemGroup>
 </Project>

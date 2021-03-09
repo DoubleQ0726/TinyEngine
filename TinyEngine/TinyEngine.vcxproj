@@ -145,10 +145,16 @@
     <ClInclude Include="src\Events\KeyEvent.h" />
     <ClInclude Include="src\Events\MouseEvent.h" />
     <ClInclude Include="src\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\Renender\Buffer.h" />
     <ClInclude Include="src\Renender\GraphicsContext.h" />
-    <ClInclude Include="src\Renender\OpenGLContext.h" />
+    <ClInclude Include="src\Renender\Renderer.h" />
+    <ClInclude Include="src\Renender\Shader.h" />
+    <ClInclude Include="src\Renender\VertexArray.h" />
     <ClInclude Include="src\Tiny.h" />
     <ClInclude Include="src\Tiny\Application.h" />
     <ClInclude Include="src\Tiny\Core.h" />
@@ -578,9 +584,15 @@
   <ItemGroup>
     <ClCompile Include="src\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Renender\OpenGLContext.cpp" />
+    <ClCompile Include="src\Renender\Buffer.cpp" />
+    <ClCompile Include="src\Renender\Renderer.cpp" />
+    <ClCompile Include="src\Renender\Shader.cpp" />
+    <ClCompile Include="src\Renender\VertexArray.cpp" />
     <ClCompile Include="src\Tiny\Application.cpp" />
     <ClCompile Include="src\Tiny\Layer.cpp" />
     <ClCompile Include="src\Tiny\LayerStack.cpp" />
@@ -599,6 +611,10 @@
     <ProjectReference Include="vecdor\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\ShaderB.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,6 +5,9 @@
 #include "Events/ApplicationEvent.h"
 #include "Tiny/LayerStack.h"
 #include "ImGui/ImGuiLayer.h"
+#include "Platform/OpenGL/OpenGLBuffer.h"
+#include "Platform/OpenGL/OpenGLVertexArray.h"
+#include "Renender/Shader.h"
 
 namespace TinyEngine
 {
@@ -31,8 +34,11 @@ namespace TinyEngine
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_ShaderA;
+		std::shared_ptr<VertexArray> m_VertexArray;
 
+		std::unique_ptr<Shader> m_ShaderB;
+		std::shared_ptr<VertexArray> m_SquareVA;
 	private:
 		static Application* s_Instance;
 	};
