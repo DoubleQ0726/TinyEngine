@@ -11,12 +11,12 @@ namespace TinyEngine
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: 
+			case RendererAPI::API::None:
 			{
 				TI_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
 				return nullptr;
 			}
-			case RendererAPI::OpenGL:
+			case RendererAPI::API::OpenGL:
 			{
 				return new TinyEngine::OpenGLVertexBuffer(vertices, size);
 			}
@@ -31,12 +31,12 @@ namespace TinyEngine
 	{
 		switch (Renderer::GetAPI())
 		{
-		case RendererAPI::None:
+		case RendererAPI::API::None:
 		{
 			TI_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
 			return nullptr;
 		}
-		case RendererAPI::OpenGL:
+		case RendererAPI::API::OpenGL:
 		{
 			return new TinyEngine::OpenGLIndexBuffer(indices, count);
 		}
