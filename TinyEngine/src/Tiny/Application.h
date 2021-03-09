@@ -5,10 +5,8 @@
 #include "Events/ApplicationEvent.h"
 #include "Tiny/LayerStack.h"
 #include "ImGui/ImGuiLayer.h"
-#include "Platform/OpenGL/OpenGLBuffer.h"
-#include "Platform/OpenGL/OpenGLVertexArray.h"
-#include "Renender/Shader.h"
-#include "Renender/OrthographicCamera.h"
+#include "Core/Timestep.h"
+
 
 namespace TinyEngine
 {
@@ -35,13 +33,8 @@ namespace TinyEngine
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-		std::shared_ptr<Shader> m_ShaderA;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_ShaderB;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
+		Timestep m_Timestep;
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};

@@ -14,63 +14,14 @@ namespace TinyEngine
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
-		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		TI_CORE_ASSERT(!s_Instance, "Application already exist!");
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
+		m_Window->SetVSync(false);
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverLay(m_ImGuiLayer);
-
-		float vertices[9] =
-		{
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.0f,  0.5f, 0.0f
-		};
-		unsigned int indeices[3] =
-		{
-			0, 1, 2
-		};
-		m_ShaderA.reset(new Shader("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\Basic.Shader"));
-		m_ShaderB.reset(new Shader("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\ShaderB.shader"));
-		//m_ShaderA = std::make_unique<Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\Basic.Shader");
-		//m_ShaderB = std::make_unique<Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\ShaderB.shader");
-		std::shared_ptr<VertexBuffer> vertexBuffer;
-		std::shared_ptr<IndexBuffer> indexBuffer;
-		m_VertexArray.reset(VertexArray::Create());
-		vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
-		BufferLayout layout = {
-			{ShaderDataType::Float3, "a_Poaition"},
-		};
-		vertexBuffer->SetLayout(layout);
-		m_VertexArray->AddVertexBuffer(vertexBuffer);
-
-		indexBuffer.reset(IndexBuffer::Create(indeices, 3));
-		m_VertexArray->SetIndexBuffer(indexBuffer);
-
-		float squareVertices[3 * 4] =
-		{
-			 0.75f,  0.75f, 0.0f,   
-			 0.75f, -0.75f, 0.0f,  
-			-0.75f, -0.75f, 0.0f, 
-			-0.75f,  0.75f, 0.0f 
-		};
-		m_SquareVA.reset(VertexArray::Create());
-		BufferLayout squareVBLayout = {
-			{ShaderDataType::Float3, "position"},
-		};
-		std::shared_ptr<VertexBuffer> squareVB;
-		squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-		squareVB->SetLayout(squareVBLayout);
-		m_SquareVA->AddVertexBuffer(squareVB);
-		uint32_t squareIndices[6] = { 
-			0, 1, 3, 
-			1, 2, 3 };
-		std::shared_ptr<IndexBuffer> squareIB;
-		squareIB.reset(IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
-		m_SquareVA->SetIndexBuffer(squareIB);
 	}
 
 	Application::~Application()
@@ -121,20 +72,13 @@ namespace TinyEngine
 		//}
 		while (m_Running)
 		{
-
-			RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1.0f});
-			RenderCommand::Clear();
-			m_Camera.SetRotation(45);
-			m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
-
-			Renderer::BeginScene(m_Camera);
-			Renderer::Submit(m_ShaderA, m_SquareVA);
-			Renderer::Submit(m_ShaderB, m_VertexArray);
-			Renderer::EndScene();
+			float time = (float)glfwGetTime();
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();
