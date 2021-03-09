@@ -153,6 +153,7 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\Renender\Buffer.h" />
     <ClInclude Include="src\Renender\GraphicsContext.h" />
+    <ClInclude Include="src\Renender\OrthographicCamera.h" />
     <ClInclude Include="src\Renender\RenderCommand.h" />
     <ClInclude Include="src\Renender\Renderer.h" />
     <ClInclude Include="src\Renender\RendererAPI.h" />
@@ -594,6 +595,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\Renender\Buffer.cpp" />
+    <ClCompile Include="src\Renender\OrthographicCamera.cpp" />
     <ClCompile Include="src\Renender\RenderCommand.cpp" />
     <ClCompile Include="src\Renender\Renderer.cpp" />
     <ClCompile Include="src\Renender\RendererAPI.cpp" />

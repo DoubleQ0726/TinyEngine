@@ -8,6 +8,7 @@
 #include "Platform/OpenGL/OpenGLBuffer.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 #include "Renender/Shader.h"
+#include "Renender/OrthographicCamera.h"
 
 namespace TinyEngine
 {
@@ -34,11 +35,13 @@ namespace TinyEngine
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-		std::unique_ptr<Shader> m_ShaderA;
+		std::shared_ptr<Shader> m_ShaderA;
 		std::shared_ptr<VertexArray> m_VertexArray;
 
-		std::unique_ptr<Shader> m_ShaderB;
+		std::shared_ptr<Shader> m_ShaderB;
 		std::shared_ptr<VertexArray> m_SquareVA;
+
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};

@@ -1349,6 +1349,7 @@
     <ClInclude Include="src\Renender\RendererAPI.h" />
     <ClInclude Include="src\Renender\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderAPI.h" />
+    <ClInclude Include="src\Renender\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ImGui\ImGuiBuild.cpp">
@@ -1388,6 +1389,7 @@
     <ClCompile Include="src\Renender\RendererAPI.cpp" />
     <ClCompile Include="src\Renender\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRenderAPI.cpp" />
+    <ClCompile Include="src\Renender\OrthographicCamera.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Basic.shader" />

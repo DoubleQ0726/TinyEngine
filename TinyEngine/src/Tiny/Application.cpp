@@ -7,12 +7,14 @@
 #include "Platform/Windows/WindowsInput.h"
 #include "Renender/Renderer.h"
 #include "Renender/RenderCommand.h"
+
 namespace TinyEngine
 {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1) 
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application()
+		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		TI_CORE_ASSERT(!s_Instance, "Application already exist!");
 		s_Instance = this;
@@ -31,8 +33,10 @@ namespace TinyEngine
 		{
 			0, 1, 2
 		};
-		m_ShaderA = std::make_unique<Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\Basic.Shader");
-		m_ShaderB = std::make_unique<Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\ShaderB.shader");
+		m_ShaderA.reset(new Shader("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\Basic.Shader"));
+		m_ShaderB.reset(new Shader("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\ShaderB.shader"));
+		//m_ShaderA = std::make_unique<Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\Basic.Shader");
+		//m_ShaderB = std::make_unique<Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\ShaderB.shader");
 		std::shared_ptr<VertexBuffer> vertexBuffer;
 		std::shared_ptr<IndexBuffer> indexBuffer;
 		m_VertexArray.reset(VertexArray::Create());
@@ -48,10 +52,10 @@ namespace TinyEngine
 
 		float squareVertices[3 * 4] =
 		{
-			 0.5f,  0.5f, 0.0f,   
-			 0.5f, -0.5f, 0.0f,  
-			-0.5f, -0.5f, 0.0f, 
-			-0.5f,  0.5f, 0.0f 
+			 0.75f,  0.75f, 0.0f,   
+			 0.75f, -0.75f, 0.0f,  
+			-0.75f, -0.75f, 0.0f, 
+			-0.75f,  0.75f, 0.0f 
 		};
 		m_SquareVA.reset(VertexArray::Create());
 		BufferLayout squareVBLayout = {
@@ -120,14 +124,12 @@ namespace TinyEngine
 
 			RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1.0f});
 			RenderCommand::Clear();
+			m_Camera.SetRotation(45);
+			m_Camera.SetPosition({ 0.5f, 0.5f, 0.0f });
 
-			Renderer::BeginScene();
-
-			m_ShaderA->Bind();
-			Renderer::Submit(m_SquareVA);
-
-			m_ShaderB->Bind();
-			Renderer::Submit(m_VertexArray);
+			Renderer::BeginScene(m_Camera);
+			Renderer::Submit(m_ShaderA, m_SquareVA);
+			Renderer::Submit(m_ShaderB, m_VertexArray);
 			Renderer::EndScene();
 
 			for (Layer* layer : m_LayerStack)
