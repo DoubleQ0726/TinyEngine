@@ -19,6 +19,9 @@ namespace TinyEngine
 		s_Instance = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallBack(BIND_EVENT_FN(OnEvent));
+
+		Renderer::Init();
+
 		m_Window->SetVSync(false);
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverLay(m_ImGuiLayer);

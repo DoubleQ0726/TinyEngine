@@ -17,7 +17,9 @@
 
 #include "Renender/Buffer.h"
 #include "Renender/Shader.h"
+#include "Renender/Texture.h"
 #include "Renender/VertexArray.h"
+#include "Platform/OpenGL/OpenGLShader.h"
 
 #include "Renender/OrthographicCamera.h"
 //------------------------------

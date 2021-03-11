@@ -1,5 +1,5 @@
 #pragma once
-
+#include <memory>
 #ifdef TI_PLATFORM_WINDOWS
 #if TI_DYNAMIC_LINK
 	#ifdef TI_BUILD_DLL
@@ -18,7 +18,6 @@
 	#define  TI_ENABLE_ASSERTS
 #endif // TI_DEBUG
 
-
 #if TI_ENABLE_ASSERTS
 	#define TI_ASSERT(x, ...) { if (!(x)) { TI_ERROR("Assertion Failed: {0}", __VA__ARGS__); __debugbreak(); } }
 	#define TI__CORE_ASSERT(x, ...) { if (!(x)) { TI_CORE_ERROR("Assertion Failed: {0}", __VA__ARGS__); __debugbreak(); } }
@@ -32,3 +31,12 @@
 #define BIT(x) (1 << x)
 
 #define TI_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace TinyEngine
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}

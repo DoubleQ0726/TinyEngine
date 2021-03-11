@@ -18,6 +18,7 @@ IncludeDir["GLFW"] = "TinyEngine/vecdor/GLFW/include"
 IncludeDir["Glad"] = "TinyEngine/vecdor/Glad/include"
 IncludeDir["ImGui"] = "TinyEngine/vecdor/imgui"
 IncludeDir["glm"] = "TinyEngine/vecdor/glm"
+IncludeDir["stb_image"] = "TinyEngine/vecdor/stb_image"
 
 include "TinyEngine/vecdor/GLFW"
 include "TinyEngine/vecdor/Glad"
@@ -41,7 +42,9 @@ project "TinyEngine"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vecdor/glm/glm/**.hpp",
-		"%{prj.name}/vecdor/glm/glm/**.inl"
+		"%{prj.name}/vecdor/glm/glm/**.inl",
+		"%{prj.name}/vecdor/stb_image/**.h",
+		"%{prj.name}/vecdor/stb_image/**.cpp"
 	}
 
 	includedirs
@@ -51,7 +54,8 @@ project "TinyEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links

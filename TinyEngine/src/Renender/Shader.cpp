@@ -1,133 +1,67 @@
 #include "TinyPch.h"
 #include "Shader.h"
+#include "Renender/Renderer.h"
+#include "Platform/OpenGL/OpenGLShader.h"
 #include <glad/glad.h>
 
 namespace TinyEngine
 {
-
-	Shader::Shader(const std::string& filePath)
-		: m_FilePath(filePath), m_RenderID(0)
+	
+	TinyEngine::Ref<Shader> Shader::Create(const std::string& filePath)
 	{
-		ShaderProgramSource source = ParseShader(filePath);
-		m_RenderID = CreateShader(source.VertexSource, source.FragmentSource);
-	}
-
-	Shader::~Shader()
-	{
-		glDeleteProgram(m_RenderID);
-	}
-
-	void Shader::Bind() const
-	{
-		glUseProgram(m_RenderID);
-	}
-
-	void Shader::Unbind() const
-	{
-		glUseProgram(0);
-	}
-
-	void Shader::SetUniform1i(const std::string& name, int value)
-	{
-		glUniform1i(GetUniformLocation(name), value);
-	}
-
-
-	void Shader::SetUniform1f(const std::string& name, float value)
-	{
-		glUniform1f(GetUniformLocation(name), value);
-	}
-
-	void Shader::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
-	{
-		glUniform4f(GetUniformLocation(name), v0, v1, v2, v3);
-	}
-
-	void Shader::SetUniformMat4f(const std::string& name, const glm::mat4& matrix)
-	{
-		glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, &matrix[0][0]);
-	}
-
-	unsigned int Shader::GetUniformLocation(const std::string& name)
-	{
-		if (m_LocationCache.find(name) != m_LocationCache.end())
-			return m_LocationCache[name];
-
-		int location = glGetUniformLocation(m_RenderID, name.c_str());
-		if (location == -1)
-			std::cout << "Warning: uniform '" << name << "' doesn't exist!" << std::endl;
-		m_LocationCache[name] = location;
-		return location;
-	}
-
-
-	ShaderProgramSource Shader::ParseShader(const std::string& filePath)
-	{
-		std::ifstream stream(filePath);
-		enum class ShaderType
+		switch (Renderer::GetAPI())
 		{
-			None = -1, VERTEX = 0, FRAGMENT = 1
-		};
-		std::stringstream ss[2];
-		ShaderType type = ShaderType::None;
-		std::string line;
-		while (getline(stream, line))
+		case RendererAPI::API::None:
 		{
-			if (line.find("#shader") != std::string::npos)
-			{
-				if (line.find("vertex") != std::string::npos)
-					type = ShaderType::VERTEX;
-				else if (line.find("fragment") != std::string::npos)
-					type = ShaderType::FRAGMENT;
-			}
-			else
-			{
-				if (type == ShaderType::None)
-					return {};
-				ss[(type == ShaderType::VERTEX ? 0 : 1)] << line << "\n";
-			}
+			TI_CORE_ASSERT(false, "RendererAPI::None is currently not supported!");
+			return nullptr;
 		}
-
-		return { ss[0].str(), ss[1].str() };
-	}
-
-	unsigned int Shader::CompileShader(unsigned int type, const std::string& source)
-	{
-		unsigned int id = glCreateShader(type);
-		const char* src = source.c_str();
-		glShaderSource(id, 1, &src, nullptr);
-		glCompileShader(id);
-
-		int result;
-		glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-		if (result == GL_FALSE)
+		case RendererAPI::API::OpenGL:
 		{
-			int length;
-			glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
-			char* message = (char*)_malloca(length * sizeof(char));
-			glGetShaderInfoLog(id, length, &length, message);
-			std::cout << "Failed to Compile " << (type == GL_VERTEX_SHADER ? "Vertex" : "Fragment") << "Shader\n";
-			std::cout << message << std::endl;
-			glDeleteShader(id);
-			return 0;
+			return std::make_shared<OpenGLShader>(filePath);
 		}
-		//std::cout << "ID: " << id << std::endl;
-		return id;
+		default:
+			break;
+		}
+		TI_CORE_ASSERT(false, "Unknown RendererAPI!");
+		return nullptr;
 	}
 
-	unsigned int Shader::CreateShader(const std::string& vertexShader, const std::string& fragmentShader)
+	void ShaderLibrary::Add(const Ref<Shader>& shader)
 	{
-		unsigned int program = glCreateProgram();
-		unsigned int vs = CompileShader(GL_VERTEX_SHADER, vertexShader);
-		unsigned int fs = CompileShader(GL_FRAGMENT_SHADER, fragmentShader);
-		glAttachShader(program, vs);
-		glAttachShader(program, fs);
-		glLinkProgram(program);
-		glValidateProgram(program);
-
-		glDeleteShader(vs);
-		glDeleteShader(fs);
-		//std::cout << "Program: " << program << std::endl;
-		return program;
+		auto& name = shader->GetName();
+		Add(name, shader);
 	}
+
+	void ShaderLibrary::Add(const std::string& name, const Ref<Shader>& shader)
+	{
+		TI_CORE_ASSERT(!Exists(name), "Shader already exists!");
+		m_Shaders[name] = shader;
+	}
+
+	TinyEngine::Ref<TinyEngine::Shader> ShaderLibrary::Load(const std::string& filePath)
+	{
+		auto shader = Shader::Create(filePath);
+		Add(shader);
+		return shader;
+	}
+
+	TinyEngine::Ref<TinyEngine::Shader> ShaderLibrary::Load(const std::string& name, const std::string& filePath)
+	{
+		auto shader = Shader::Create(filePath);
+		Add(name, shader);
+		return shader;
+	}
+
+	TinyEngine::Ref<TinyEngine::Shader> ShaderLibrary::Get(const std::string& name)
+	{
+		TI_CORE_ASSERT(Exists(name), "Shader not found!");
+		return m_Shaders[name];
+	}
+
+	bool ShaderLibrary::Exists(const std::string& name) const
+	{
+		return m_Shaders.find(name) != m_Shaders.end();
+	}
+
 }

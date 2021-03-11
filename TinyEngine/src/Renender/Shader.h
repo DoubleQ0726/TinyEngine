@@ -1,37 +1,34 @@
 #pragma once
 #include "glm/glm.hpp"
+#include "Tiny/Core.h"
 
 namespace TinyEngine
 {
-	struct ShaderProgramSource
-	{
-		std::string VertexSource;
-		std::string FragmentSource;
-	};
-
 	class Shader
 	{
 	public:
-		Shader(const std::string& filePath);
-		~Shader();
+		virtual ~Shader() = default;
 
-		void Bind() const;
-		void Unbind() const;
+		virtual const std::string& GetName() const = 0;
 
-		//Set Uniforms
-		void SetUniform1i(const std::string& name, int value);
-		void SetUniform1f(const std::string& name, float value);
-		void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-		void SetUniformMat4f(const std::string& name, const glm::mat4& matrix);
+		virtual void Bind() const = 0;
+		virtual void Unbind() const = 0;
 
+		static Ref<Shader> Create(const std::string& filePath);
+	};
+
+	class ShaderLibrary
+	{
+	public:
+		void Add(const Ref<Shader>& shader);
+		void Add(const std::string& name, const Ref<Shader>& shader);
+		Ref<Shader> Load(const std::string& filePath);
+		Ref<Shader> Load(const std::string& name, const std::string& filePath);
+
+		Ref<Shader> Get(const std::string& name);
+
+		bool Exists(const std::string& name) const;
 	private:
-		unsigned int GetUniformLocation(const std::string& name);
-		ShaderProgramSource ParseShader(const std::string& filePath);
-		unsigned int CompileShader(unsigned int type, const std::string& source);
-		unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
-	private:
-		unsigned int m_RenderID;
-		std::string m_FilePath;
-		std::unordered_map<std::string, int> m_LocationCache;
+		std::unordered_map<std::string, Ref<Shader>> m_Shaders;
 	};
 }

@@ -1,6 +1,7 @@
 #include <Tiny.h>
 #include "imgui.h"
 #include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 class ExampleLayer : public TinyEngine::Layer
 {
@@ -18,10 +19,12 @@ public:
 		{
 			0, 1, 2
 		};
-		m_ShaderA = std::make_unique<TinyEngine::Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\Basic.Shader");
-		m_ShaderB = std::make_unique<TinyEngine::Shader>("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\ShaderB.shader");
-		std::shared_ptr<TinyEngine::VertexBuffer> vertexBuffer;
-		std::shared_ptr<TinyEngine::IndexBuffer> indexBuffer;
+		m_ShaderA = TinyEngine::Shader::Create("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\Basic.Shader");
+		m_ShaderB = TinyEngine::Shader::Create("D:\\Work\\C++\\TinyEngine\\TinyEngine\\res\\shaders\\ShaderB.shader");
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
+
+		TinyEngine::Ref<TinyEngine::VertexBuffer> vertexBuffer;
+		TinyEngine::Ref<TinyEngine::IndexBuffer> indexBuffer;
 		m_VertexArray.reset(TinyEngine::VertexArray::Create());
 		vertexBuffer.reset(TinyEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
 		TinyEngine::BufferLayout layout = {
@@ -33,27 +36,36 @@ public:
 		indexBuffer.reset(TinyEngine::IndexBuffer::Create(indeices, 3));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		float squareVertices[3 * 4] =
+		float squareVertices[] =
 		{
-			 0.5f,  0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			-0.5f, -0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 		m_SquareVA.reset(TinyEngine::VertexArray::Create());
-		TinyEngine::BufferLayout squareVBLayout = {
-			{TinyEngine::ShaderDataType::Float3, "position"},
+		TinyEngine::BufferLayout squareVBLayout = 
+		{
+			{TinyEngine::ShaderDataType::Float3, "a_Position"},
+			{TinyEngine::ShaderDataType::Float2, "a_Texcoord"}
 		};
-		std::shared_ptr<TinyEngine::VertexBuffer> squareVB;
+		TinyEngine::Ref<TinyEngine::VertexBuffer> squareVB;
 		squareVB.reset(TinyEngine::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout(squareVBLayout);
 		m_SquareVA->AddVertexBuffer(squareVB);
-		uint32_t squareIndices[6] = {
+		uint32_t squareIndices[6] = 
+		{
 			0, 1, 3,
-			1, 2, 3 };
-		std::shared_ptr<TinyEngine::IndexBuffer> squareIB;
+			1, 2, 3 
+		};
+		TinyEngine::Ref<TinyEngine::IndexBuffer> squareIB;
 		squareIB.reset(TinyEngine::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
+
+		m_Texture2D = TinyEngine::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_ChernoLogoTexture = TinyEngine::Texture2D::Create("assets/textures/ChernoLogo.png");
+		textureShader->Bind();
+		std::dynamic_pointer_cast<TinyEngine::OpenGLShader>(textureShader)->SetUniform1i("u_Texture", 0);
 	}
 
 	void OnUpdate(TinyEngine::Timestep ts) override
@@ -90,6 +102,10 @@ public:
 		TinyEngine::Renderer::BeginScene(m_Camera);
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
+		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
+		m_ShaderA->Bind();
+		std::dynamic_pointer_cast<TinyEngine::OpenGLShader>(m_ShaderA)->SetUniform4f("u_Color", m_SquareColor.r, m_SquareColor.g, m_SquareColor.b, m_SquareColor.a);
 		for (int y = 0; y < 20; ++y)
 		{
 			for (int x = 0; x < 20; ++x)
@@ -99,12 +115,21 @@ public:
 				TinyEngine::Renderer::Submit(m_ShaderA, m_SquareVA, transform);
 			}
 		}
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+		m_Texture2D->Bind(0);
+		TinyEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		m_ChernoLogoTexture->Bind(0);
+		TinyEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		//Triangle
 		//TinyEngine::Renderer::Submit(m_ShaderB, m_VertexArray);
 		TinyEngine::Renderer::EndScene();
 	}
 
 	void OnImGuiRender() override
 	{
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(TinyEngine::Event& e) override
@@ -119,11 +144,12 @@ public:
 	}
 
 private:
-	std::shared_ptr<TinyEngine::Shader> m_ShaderA;
-	std::shared_ptr<TinyEngine::VertexArray> m_VertexArray;
+	TinyEngine::ShaderLibrary m_ShaderLibrary;
+	TinyEngine::Ref<TinyEngine::Shader> m_ShaderA;
+	TinyEngine::Ref<TinyEngine::Shader> m_ShaderB;
 
-	std::shared_ptr<TinyEngine::Shader> m_ShaderB;
-	std::shared_ptr<TinyEngine::VertexArray> m_SquareVA;
+	TinyEngine::Ref<TinyEngine::VertexArray> m_VertexArray;
+	TinyEngine::Ref<TinyEngine::VertexArray> m_SquareVA;
 
 	TinyEngine::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
@@ -133,6 +159,10 @@ private:
 	float m_CameraRotationSpeed = 180.0f;
 
 	float m_SquareMoveSpeed = 1.0f;
+
+	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+
+	TinyEngine::Ref<TinyEngine::Texture> m_Texture2D, m_ChernoLogoTexture;
 };
 
 class SandBox : public TinyEngine::Application
