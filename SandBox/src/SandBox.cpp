@@ -7,7 +7,7 @@ class ExampleLayer : public TinyEngine::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
+		: Layer("Example"), m_CameraController(4.0f / 3.0f, true), m_SquarePosition(0.0f)
 	{
 		float vertices[9] =
 		{
@@ -70,21 +70,8 @@ public:
 
 	void OnUpdate(TinyEngine::Timestep ts) override
 	{
-		TI_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMillisecond());
-		if (TinyEngine::Input::IsKeyPressed(TINY_KEY_LEFT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-		else if (TinyEngine::Input::IsKeyPressed(TINY_KEY_RIGHT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
-		if (TinyEngine::Input::IsKeyPressed(TINY_KEY_UP))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-		else if (TinyEngine::Input::IsKeyPressed(TINY_KEY_DOWN))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-
-		if (TinyEngine::Input::IsKeyPressed(TINY_KEY_A))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-		if (TinyEngine::Input::IsKeyPressed(TINY_KEY_D))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-
+		// OnUpdate
+		m_CameraController.OnUpdate(ts);
 		if (TinyEngine::Input::IsKeyPressed(TINY_KEY_J))
 			m_SquarePosition.x -= m_SquareMoveSpeed * ts;
 		else if (TinyEngine::Input::IsKeyPressed(TINY_KEY_L))
@@ -94,12 +81,11 @@ public:
 		else if (TinyEngine::Input::IsKeyPressed(TINY_KEY_K))
 			m_SquarePosition.y -= m_SquareMoveSpeed * ts;
 
+
+		//Render
 		TinyEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });
 		TinyEngine::RenderCommand::Clear();
-		m_Camera.SetRotation(m_CameraRotation);
-		m_Camera.SetPosition(m_CameraPosition);
-
-		TinyEngine::Renderer::BeginScene(m_Camera);
+		TinyEngine::Renderer::BeginScene(m_CameraController.GetCamera());
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
@@ -134,8 +120,7 @@ public:
 
 	void OnEvent(TinyEngine::Event& e) override
 	{
-		TinyEngine::EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<TinyEngine::KeyPressedEvent>(TI_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
+		m_CameraController.OnEvent(e);
 	}
 
 	bool OnKeyPressedEvent(TinyEngine::KeyPressedEvent& event)
@@ -151,13 +136,9 @@ private:
 	TinyEngine::Ref<TinyEngine::VertexArray> m_VertexArray;
 	TinyEngine::Ref<TinyEngine::VertexArray> m_SquareVA;
 
-	TinyEngine::OrthographicCamera m_Camera;
+	TinyEngine::OrthographicCameraController m_CameraController;
 	glm::vec3 m_CameraPosition;
 	glm::vec3 m_SquarePosition;
-	float m_CameraMoveSpeed = 5.0f;
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 180.0f;
-
 	float m_SquareMoveSpeed = 1.0f;
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };

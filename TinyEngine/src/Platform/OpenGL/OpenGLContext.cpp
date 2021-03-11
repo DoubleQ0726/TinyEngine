@@ -20,8 +20,10 @@ namespace TinyEngine
 
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		TI_CORE_ASSERT(status, "Failed to initalize Glad!");
-
-		TI_CORE_INFO("OpenGL Renderer: {0} {1} {2}", glGetString(GL_VENDOR), glGetString(GL_RENDERER), glGetString(GL_VERSION));
+		TI_CORE_INFO("OpenGL info:");
+		TI_CORE_INFO("  Vecdor: {0}", glGetString(GL_VENDOR));
+		TI_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		TI_CORE_INFO("  Version, {0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()

@@ -173,6 +173,7 @@
     <ClInclude Include="src\Tiny\LayerStack.h" />
     <ClInclude Include="src\Tiny\Log.h" />
     <ClInclude Include="src\Tiny\MouseButtonCodes.h" />
+    <ClInclude Include="src\Tiny\OrthographicCameraController.h" />
     <ClInclude Include="src\Tiny\Window.h" />
     <ClInclude Include="src\TinyPch.h" />
     <ClInclude Include="vecdor\glm\glm\common.hpp" />
@@ -617,6 +618,7 @@
     <ClCompile Include="src\TinyPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Tiny\OrthographicCameraController.cpp" />
     <ClCompile Include="vecdor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
