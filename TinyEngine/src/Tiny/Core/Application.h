@@ -1,11 +1,11 @@
 #pragma once
 #include "Core.h"
-#include "Events/Event.h"
+#include "Tiny/Events/Event.h"
 #include "Window.h"
-#include "Events/ApplicationEvent.h"
-#include "Tiny/LayerStack.h"
-#include "ImGui/ImGuiLayer.h"
-#include "Core/Timestep.h"
+#include "Tiny/Events/ApplicationEvent.h"
+#include "Tiny/Core/LayerStack.h"
+#include "Tiny/ImGui/ImGuiLayer.h"
+#include "Tiny/Core/Timestep.h"
 
 
 namespace TinyEngine

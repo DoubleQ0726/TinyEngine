@@ -1,8 +1,8 @@
 #pragma once
-#include "Tiny/Layer.h"
-#include "Events/MouseEvent.h"
-#include "Events/KeyEvent.h"
-#include "Events/ApplicationEvent.h"
+#include "Tiny/Core/Layer.h"
+#include "Tiny/Events/MouseEvent.h"
+#include "Tiny/Events/KeyEvent.h"
+#include "Tiny/Events/ApplicationEvent.h"
 namespace TinyEngine
 {
 	class TINY_API ImGuiLayer : public Layer

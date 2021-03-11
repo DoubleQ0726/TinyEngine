@@ -1,6 +1,6 @@
 #pragma once
 #include "TinyPch.h"
-#include "Tiny/Core.h"
+#include "Tiny/Core/Core.h"
 namespace TinyEngine
 {
 	enum class EventType

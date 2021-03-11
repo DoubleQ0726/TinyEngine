@@ -1,30 +1,28 @@
 #pragma once
 
 //For use by Tiny Applications
-#include "Tiny/Application.h"
-#include "Tiny/Log.h"
-#include "Tiny/Layer.h"
-#include "ImGui/ImGuiLayer.h"
-#include "Tiny/Input.h"
-#include "Tiny/KeyCodes.h"
-#include "Tiny/MouseButtonCodes.h"
-#include "Core/Timestep.h"
-#include "Tiny/OrthographicCameraController.h"
+#include "Tiny/Core/Application.h"
+#include "Tiny/Core/Log.h"
+#include "Tiny/Core/Layer.h"
+#include "Tiny/ImGui/ImGuiLayer.h"
+#include "Tiny/Core/Input.h"
+#include "Tiny/Core/KeyCodes.h"
+#include "Tiny/Core/MouseButtonCodes.h"
+#include "Tiny/Core/Timestep.h"
 
 
 //---------Renderer----------
-#include "Renender/Renderer.h"
-#include "Renender/RenderCommand.h"
-
-#include "Renender/Buffer.h"
-#include "Renender/Shader.h"
-#include "Renender/Texture.h"
-#include "Renender/VertexArray.h"
+#include "Tiny/Render/Renderer.h"
+#include "Tiny/Render/RenderCommand.h"
+#include "Tiny/Render/Buffer.h"
+#include "Tiny/Render/Shader.h"
+#include "Tiny/Render/Texture.h"
+#include "Tiny/Render/VertexArray.h"
 #include "Platform/OpenGL/OpenGLShader.h"
-
-#include "Renender/OrthographicCamera.h"
+#include "Tiny/Render/OrthographicCameraController.h"
+#include "Tiny/Render/OrthographicCamera.h"
 //------------------------------
 
 //---------Entry Point----------
-#include "Tiny/EntryPoint.h"
+#include "Tiny/Core/EntryPoint.h"
 //------------------------------

@@ -1,6 +1,6 @@
 #include "TinyPch.h"
 #include "OpenGLShader.h"
-#include "Tiny/Log.h"
+#include "Tiny/Core/Log.h"
 #include <glad/glad.h>
 
 namespace TinyEngine

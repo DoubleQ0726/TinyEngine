@@ -1,7 +1,7 @@
 #include "TinyPch.h"
 #include "Buffer.h"
 #include "Renderer.h"
-#include "Tiny/Core.h"
+#include "Tiny/Core/Core.h"
 #include "Platform/OpenGL/OpenGLBuffer.h"
 
 namespace TinyEngine

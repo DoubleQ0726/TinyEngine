@@ -1,7 +1,7 @@
 #pragma once
 #include "RendererAPI.h"
-#include "Renender/Shader.h"
-#include "Renender/OrthographicCamera.h"
+#include "Tiny/Render/Shader.h"
+#include "Tiny/Render/OrthographicCamera.h"
 namespace TinyEngine
 {
 	class Renderer

@@ -1,5 +1,5 @@
 #pragma once
-#include "Renender/Buffer.h"
+#include "Tiny/Render/Buffer.h"
 
 namespace TinyEngine
 {

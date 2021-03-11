@@ -4,15 +4,6 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Core">
-      <UniqueIdentifier>{A5D31CCF-91A0-77DA-BAB9-6582A6E5AC68}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Events">
-      <UniqueIdentifier>{7162C20E-5D1A-045C-C621-DDB7B2F89E4C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\ImGui">
-      <UniqueIdentifier>{170E22B3-8378-D629-CCB6-87CF3860B47E}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -22,11 +13,20 @@
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Renender">
-      <UniqueIdentifier>{CF9DF6BF-BB00-8664-6486-BE1A50C851E7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\Tiny">
       <UniqueIdentifier>{200C26CF-0CD9-80DA-35F2-6E82211EB668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tiny\Core">
+      <UniqueIdentifier>{78C4EB82-E484-67B9-ADBF-B036193FAC95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tiny\Events">
+      <UniqueIdentifier>{04D410F2-705F-7EB6-7970-01ABE57ADAB6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tiny\ImGui">
+      <UniqueIdentifier>{4A19CFE0-36E7-C2E6-1F7B-330D0BE89E4B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Tiny\Renender">
+      <UniqueIdentifier>{22C0A7B0-8ED6-A546-D74D-316843A376CE}</UniqueIdentifier>
     </Filter>
     <Filter Include="vecdor">
       <UniqueIdentifier>{886B7B22-740D-A6F8-5DC8-B94C49092D49}</UniqueIdentifier>
@@ -54,24 +54,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Timestep.h">
-      <Filter>src\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\ApplicationEvent.h">
-      <Filter>src\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\Event.h">
-      <Filter>src\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\KeyEvent.h">
-      <Filter>src\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Events\MouseEvent.h">
-      <Filter>src\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ImGui\ImGuiLayer.h">
-      <Filter>src\ImGui</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -96,65 +78,56 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\Renender\Buffer.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\GraphicsContext.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\OrthographicCamera.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\RenderCommand.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\Renderer.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\RendererAPI.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\Shader.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\Texture.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Renender\VertexArray.h">
-      <Filter>src\Renender</Filter>
-    </ClInclude>
     <ClInclude Include="src\Tiny.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\Application.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\Application.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\Core.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\Core.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\EntryPoint.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\EntryPoint.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\Input.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\Input.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\KeyCodes.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\KeyCodes.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\Layer.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\Layer.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\LayerStack.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\LayerStack.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\Log.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\Log.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\MouseButtonCodes.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\MouseButtonCodes.h">
+      <Filter>src\Tiny\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\Window.h">
-      <Filter>src\Tiny</Filter>
+    <ClInclude Include="src\Tiny\Core\Timestep.h">
+      <Filter>src\Tiny\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Core\Window.h">
+      <Filter>src\Tiny\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Events\ApplicationEvent.h">
+      <Filter>src\Tiny\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Events\Event.h">
+      <Filter>src\Tiny\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Events\KeyEvent.h">
+      <Filter>src\Tiny\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Events\MouseEvent.h">
+      <Filter>src\Tiny\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\ImGui\ImGuiLayer.h">
+      <Filter>src\Tiny\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\TinyPch.h">
       <Filter>src</Filter>
@@ -1401,18 +1374,38 @@
     <ClInclude Include="vecdor\stb_image\stb_image.h">
       <Filter>vecdor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\OrthographicCameraController.h" />
+    <ClInclude Include="src\Tiny\Render\Buffer.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\GraphicsContext.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\OrthographicCamera.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\OrthographicCameraController.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\RenderCommand.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Renderer.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\RendererAPI.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Shader.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Texture.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\VertexArray.h">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\Timestep.cpp">
-      <Filter>src\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ImGui\ImGuiBuild.cpp">
-      <Filter>src\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
-      <Filter>src\ImGui</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1437,41 +1430,26 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\Buffer.cpp">
-      <Filter>src\Renender</Filter>
+    <ClCompile Include="src\Tiny\Core\Application.cpp">
+      <Filter>src\Tiny\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\OrthographicCamera.cpp">
-      <Filter>src\Renender</Filter>
+    <ClCompile Include="src\Tiny\Core\Layer.cpp">
+      <Filter>src\Tiny\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\RenderCommand.cpp">
-      <Filter>src\Renender</Filter>
+    <ClCompile Include="src\Tiny\Core\LayerStack.cpp">
+      <Filter>src\Tiny\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\Renderer.cpp">
-      <Filter>src\Renender</Filter>
+    <ClCompile Include="src\Tiny\Core\Log.cpp">
+      <Filter>src\Tiny\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\RendererAPI.cpp">
-      <Filter>src\Renender</Filter>
+    <ClCompile Include="src\Tiny\Core\Timestep.cpp">
+      <Filter>src\Tiny\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\Shader.cpp">
-      <Filter>src\Renender</Filter>
+    <ClCompile Include="src\Tiny\ImGui\ImGuiBuild.cpp">
+      <Filter>src\Tiny\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Renender\Texture.cpp">
-      <Filter>src\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Renender\VertexArray.cpp">
-      <Filter>src\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Application.cpp">
-      <Filter>src\Tiny</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Layer.cpp">
-      <Filter>src\Tiny</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\LayerStack.cpp">
-      <Filter>src\Tiny</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Log.cpp">
-      <Filter>src\Tiny</Filter>
+    <ClCompile Include="src\Tiny\ImGui\ImGuiLayer.cpp">
+      <Filter>src\Tiny\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\TinyPch.cpp">
       <Filter>src</Filter>
@@ -1479,6 +1457,32 @@
     <ClCompile Include="vecdor\stb_image\stb_image.cpp">
       <Filter>vecdor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tiny\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Tiny\Render\Buffer.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\OrthographicCamera.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\OrthographicCameraController.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\RenderCommand.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Renderer.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\RendererAPI.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Shader.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Texture.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\VertexArray.cpp">
+      <Filter>src\Tiny\Renender</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,6 @@
 #pragma once
 #include "Core.h"
-#include "Events/Event.h"
+#include "Tiny/Events/Event.h"
 
 namespace TinyEngine
 {

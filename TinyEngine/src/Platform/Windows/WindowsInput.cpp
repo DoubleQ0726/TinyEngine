@@ -1,6 +1,6 @@
 #include "TinyPch.h"
 #include "WindowsInput.h"
-#include "Tiny/Application.h"
+#include "Tiny/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace TinyEngine

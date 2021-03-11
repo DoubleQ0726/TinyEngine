@@ -1,5 +1,5 @@
 #pragma once
-#include "Tiny/Core.h"
+#include "Tiny/Core/Core.h"
 
 namespace TinyEngine
 {

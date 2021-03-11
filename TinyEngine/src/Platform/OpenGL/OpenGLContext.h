@@ -1,5 +1,5 @@
 #pragma once
-#include "Renender/GraphicsContext.h"
+#include "Tiny/Render/GraphicsContext.h"
 struct GLFWwindow;
 
 namespace TinyEngine

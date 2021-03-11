@@ -140,12 +140,6 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Core\Timestep.h" />
-    <ClInclude Include="src\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\Events\Event.h" />
-    <ClInclude Include="src\Events\KeyEvent.h" />
-    <ClInclude Include="src\Events\MouseEvent.h" />
-    <ClInclude Include="src\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderAPI.h" />
@@ -154,27 +148,33 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
-    <ClInclude Include="src\Renender\Buffer.h" />
-    <ClInclude Include="src\Renender\GraphicsContext.h" />
-    <ClInclude Include="src\Renender\OrthographicCamera.h" />
-    <ClInclude Include="src\Renender\RenderCommand.h" />
-    <ClInclude Include="src\Renender\Renderer.h" />
-    <ClInclude Include="src\Renender\RendererAPI.h" />
-    <ClInclude Include="src\Renender\Shader.h" />
-    <ClInclude Include="src\Renender\Texture.h" />
-    <ClInclude Include="src\Renender\VertexArray.h" />
     <ClInclude Include="src\Tiny.h" />
-    <ClInclude Include="src\Tiny\Application.h" />
-    <ClInclude Include="src\Tiny\Core.h" />
-    <ClInclude Include="src\Tiny\EntryPoint.h" />
-    <ClInclude Include="src\Tiny\Input.h" />
-    <ClInclude Include="src\Tiny\KeyCodes.h" />
-    <ClInclude Include="src\Tiny\Layer.h" />
-    <ClInclude Include="src\Tiny\LayerStack.h" />
-    <ClInclude Include="src\Tiny\Log.h" />
-    <ClInclude Include="src\Tiny\MouseButtonCodes.h" />
-    <ClInclude Include="src\Tiny\OrthographicCameraController.h" />
-    <ClInclude Include="src\Tiny\Window.h" />
+    <ClInclude Include="src\Tiny\Core\Application.h" />
+    <ClInclude Include="src\Tiny\Core\Core.h" />
+    <ClInclude Include="src\Tiny\Core\EntryPoint.h" />
+    <ClInclude Include="src\Tiny\Core\Input.h" />
+    <ClInclude Include="src\Tiny\Core\KeyCodes.h" />
+    <ClInclude Include="src\Tiny\Core\Layer.h" />
+    <ClInclude Include="src\Tiny\Core\LayerStack.h" />
+    <ClInclude Include="src\Tiny\Core\Log.h" />
+    <ClInclude Include="src\Tiny\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Tiny\Core\Timestep.h" />
+    <ClInclude Include="src\Tiny\Core\Window.h" />
+    <ClInclude Include="src\Tiny\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Tiny\Events\Event.h" />
+    <ClInclude Include="src\Tiny\Events\KeyEvent.h" />
+    <ClInclude Include="src\Tiny\Events\MouseEvent.h" />
+    <ClInclude Include="src\Tiny\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Tiny\Render\Buffer.h" />
+    <ClInclude Include="src\Tiny\Render\GraphicsContext.h" />
+    <ClInclude Include="src\Tiny\Render\OrthographicCamera.h" />
+    <ClInclude Include="src\Tiny\Render\OrthographicCameraController.h" />
+    <ClInclude Include="src\Tiny\Render\RenderCommand.h" />
+    <ClInclude Include="src\Tiny\Render\Renderer.h" />
+    <ClInclude Include="src\Tiny\Render\RendererAPI.h" />
+    <ClInclude Include="src\Tiny\Render\Shader.h" />
+    <ClInclude Include="src\Tiny\Render\Texture.h" />
+    <ClInclude Include="src\Tiny\Render\VertexArray.h" />
     <ClInclude Include="src\TinyPch.h" />
     <ClInclude Include="vecdor\glm\glm\common.hpp" />
     <ClInclude Include="vecdor\glm\glm\detail\_features.hpp" />
@@ -592,9 +592,6 @@
     <ClInclude Include="vecdor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Core\Timestep.cpp" />
-    <ClCompile Include="src\ImGui\ImGuiBuild.cpp" />
-    <ClCompile Include="src\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRenderAPI.cpp" />
@@ -603,22 +600,25 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Renender\Buffer.cpp" />
-    <ClCompile Include="src\Renender\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Renender\RenderCommand.cpp" />
-    <ClCompile Include="src\Renender\Renderer.cpp" />
-    <ClCompile Include="src\Renender\RendererAPI.cpp" />
-    <ClCompile Include="src\Renender\Shader.cpp" />
-    <ClCompile Include="src\Renender\Texture.cpp" />
-    <ClCompile Include="src\Renender\VertexArray.cpp" />
-    <ClCompile Include="src\Tiny\Application.cpp" />
-    <ClCompile Include="src\Tiny\Layer.cpp" />
-    <ClCompile Include="src\Tiny\LayerStack.cpp" />
-    <ClCompile Include="src\Tiny\Log.cpp" />
+    <ClCompile Include="src\Tiny\Core\Application.cpp" />
+    <ClCompile Include="src\Tiny\Core\Layer.cpp" />
+    <ClCompile Include="src\Tiny\Core\LayerStack.cpp" />
+    <ClCompile Include="src\Tiny\Core\Log.cpp" />
+    <ClCompile Include="src\Tiny\Core\Timestep.cpp" />
+    <ClCompile Include="src\Tiny\ImGui\ImGuiBuild.cpp" />
+    <ClCompile Include="src\Tiny\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Tiny\Render\Buffer.cpp" />
+    <ClCompile Include="src\Tiny\Render\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Tiny\Render\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Tiny\Render\RenderCommand.cpp" />
+    <ClCompile Include="src\Tiny\Render\Renderer.cpp" />
+    <ClCompile Include="src\Tiny\Render\RendererAPI.cpp" />
+    <ClCompile Include="src\Tiny\Render\Shader.cpp" />
+    <ClCompile Include="src\Tiny\Render\Texture.cpp" />
+    <ClCompile Include="src\Tiny\Render\VertexArray.cpp" />
     <ClCompile Include="src\TinyPch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Tiny\OrthographicCameraController.cpp" />
     <ClCompile Include="vecdor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>

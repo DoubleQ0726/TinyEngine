@@ -1,6 +1,6 @@
 #include "TinyPch.h"
 #include "Shader.h"
-#include "Renender/Renderer.h"
+#include "Tiny/Render/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 #include <glad/glad.h>
 

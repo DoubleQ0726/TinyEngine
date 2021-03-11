@@ -1,8 +1,8 @@
 #include "TinyPch.h"
 #include "WindowsWindow.h"
-#include "Events/ApplicationEvent.h"
-#include "Events/KeyEvent.h"
-#include "Events/MouseEvent.h"
+#include "Tiny/Events/ApplicationEvent.h"
+#include "Tiny/Events/KeyEvent.h"
+#include "Tiny/Events/MouseEvent.h"
 #include "Platform/OpenGL/OpenGLContext.h"
 
 namespace TinyEngine

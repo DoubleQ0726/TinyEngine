@@ -1,5 +1,5 @@
 #pragma once
-#include "Tiny/Input.h"
+#include "Tiny/Core/Input.h"
 
 namespace TinyEngine
 {

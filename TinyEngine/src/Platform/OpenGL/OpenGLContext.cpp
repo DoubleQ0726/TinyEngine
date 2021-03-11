@@ -1,7 +1,7 @@
 #include "TinyPch.h"
 #include "OpenGLContext.h"
-#include "Tiny/Core.h"
-#include "Tiny/Log.h"
+#include "Tiny/Core/Core.h"
+#include "Tiny/Core/Log.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 

@@ -1,8 +1,8 @@
 #pragma once
-#include "Renender/OrthographicCamera.h"
-#include "Core/Timestep.h"
-#include "Events/ApplicationEvent.h"
-#include "Events/MouseEvent.h"
+#include "Tiny/Render/OrthographicCamera.h"
+#include "Tiny/Core/Timestep.h"
+#include "Tiny/Events/ApplicationEvent.h"
+#include "Tiny/Events/MouseEvent.h"
 #include "glm/glm.hpp"
 
 namespace TinyEngine

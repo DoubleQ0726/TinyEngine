@@ -5,8 +5,8 @@
 #include <GLFW/glfw3.h>
 #include "imgui.h"
 #include "Platform/Windows/WindowsInput.h"
-#include "Renender/Renderer.h"
-#include "Renender/RenderCommand.h"
+#include "Tiny/Render/Renderer.h"
+#include "TIny/Render/RenderCommand.h"
 
 namespace TinyEngine
 {

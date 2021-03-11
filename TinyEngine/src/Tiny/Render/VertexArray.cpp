@@ -1,11 +1,11 @@
 #include "TinyPch.h"
-#include "Texture.h"
-#include "Renender/Renderer.h"
-#include "Platform/OpenGL/OpenGLTexture2D.h"
+#include "VertexArray.h"
+#include "Tiny/Render/Renderer.h"
+#include "Platform/OpenGL/OpenGLVertexArray.h"
 
 namespace TinyEngine
 {
-	Ref<Texture2D> Texture2D::Create(const std::string& path)
+	VertexArray* VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -16,13 +16,12 @@ namespace TinyEngine
 		}
 		case RendererAPI::API::OpenGL:
 		{
-			return std::make_shared<OpenGLTexture2D>(path);
+			return new TinyEngine::OpenGLVertexArray();
 		}
 		default:
 			break;
 		}
 		TI_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
-
 	}
 }

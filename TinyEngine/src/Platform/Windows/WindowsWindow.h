@@ -1,8 +1,8 @@
 #pragma once
-#include "Tiny/Window.h"
-#include "Tiny/Log.h"
+#include "Tiny/Core/Window.h"
+#include "Tiny/Core/Log.h"
 #include <GLFW/glfw3.h>
-#include "Renender/GraphicsContext.h"
+#include "Tiny/Render/GraphicsContext.h"
 
 namespace TinyEngine
 {
