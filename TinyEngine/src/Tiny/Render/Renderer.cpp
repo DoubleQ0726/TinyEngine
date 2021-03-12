@@ -2,12 +2,14 @@
 #include "Renderer.h"
 #include "RenderCommand.h"
 #include "Platform/OpenGL/OpenGLShader.h"
+#include "Tiny/Render/Renderer2D.h"
 
 namespace TinyEngine
 {
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::OnWindowResize(uint32_t width, uint32_t height)
@@ -16,6 +18,7 @@ namespace TinyEngine
 	}
 
 	Renderer::SceneData* Renderer::s_SceneData = new Renderer::SceneData;
+
 	void Renderer::BeginScene(OrthographicCamera& camera)
 	{
 		s_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
@@ -31,8 +34,8 @@ namespace TinyEngine
 		const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->SetUniformMat4f("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->SetUniformMat4f("u_Transform", transform);
+		shader->SetMat4f("u_ViewProjection", s_SceneData->ViewProjectionMatrix);
+		shader->SetMat4f("u_Transform", transform);
 		vertexArray->Bind();
 		RenderCommand::DrawIndex(vertexArray);
 	}

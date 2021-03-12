@@ -35,6 +35,21 @@ namespace TinyEngine
 		glUseProgram(0);
 	}
 
+	void OpenGLShader::SetMat4f(const std::string& name, const glm::mat4& matrix)
+	{
+		SetUniformMat4f(name, matrix);
+	}
+
+	void OpenGLShader::Set4f(const std::string& name, float v0, float v1, float v2, float v3)
+	{
+		SetUniform4f(name, v0, v1, v2, v3);
+	}
+
+	void OpenGLShader::Set1i(const std::string& name, int value)
+	{
+		SetUniform1i(name, value);
+	}
+
 	void OpenGLShader::SetUniform1i(const std::string& name, int value)
 	{
 		glUniform1i(GetUniformLocation(name), value);

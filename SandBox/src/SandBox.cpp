@@ -1,7 +1,10 @@
 #include <Tiny.h>
+#include <Tiny/Core/EntryPoint.h>
 #include "imgui.h"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
+
+#include "SandBox2D.h"
 
 class ExampleLayer : public TinyEngine::Layer
 {
@@ -25,7 +28,7 @@ public:
 
 		TinyEngine::Ref<TinyEngine::VertexBuffer> vertexBuffer;
 		TinyEngine::Ref<TinyEngine::IndexBuffer> indexBuffer;
-		m_VertexArray.reset(TinyEngine::VertexArray::Create());
+		m_VertexArray = TinyEngine::VertexArray::Create();
 		vertexBuffer.reset(TinyEngine::VertexBuffer::Create(vertices, sizeof(vertices)));
 		TinyEngine::BufferLayout layout = {
 			{TinyEngine::ShaderDataType::Float3, "a_Poaition"},
@@ -43,7 +46,7 @@ public:
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
-		m_SquareVA.reset(TinyEngine::VertexArray::Create());
+		m_SquareVA = TinyEngine::VertexArray::Create();
 		TinyEngine::BufferLayout squareVBLayout = 
 		{
 			{TinyEngine::ShaderDataType::Float3, "a_Position"},
@@ -65,7 +68,7 @@ public:
 		m_Texture2D = TinyEngine::Texture2D::Create("assets/textures/Checkerboard.png");
 		m_ChernoLogoTexture = TinyEngine::Texture2D::Create("assets/textures/ChernoLogo.png");
 		textureShader->Bind();
-		std::dynamic_pointer_cast<TinyEngine::OpenGLShader>(textureShader)->SetUniform1i("u_Texture", 0);
+		textureShader->Set1i("u_Texture", 0);
 	}
 
 	void OnUpdate(TinyEngine::Timestep ts) override
@@ -91,7 +94,7 @@ public:
 		glm::vec4 redColor(0.8f, 0.2f, 0.3f, 1.0f);
 		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.0f);
 		m_ShaderA->Bind();
-		std::dynamic_pointer_cast<TinyEngine::OpenGLShader>(m_ShaderA)->SetUniform4f("u_Color", m_SquareColor.r, m_SquareColor.g, m_SquareColor.b, m_SquareColor.a);
+		m_ShaderA->Set4f("u_Color", m_SquareColor.r, m_SquareColor.g, m_SquareColor.b, m_SquareColor.a);
 		for (int y = 0; y < 20; ++y)
 		{
 			for (int x = 0; x < 20; ++x)
@@ -151,7 +154,8 @@ class SandBox : public TinyEngine::Application
 public:
 	SandBox()
 	{
-		PushLayer(new ExampleLayer());
+		//PushLayer(new ExampleLayer());
+		PushLayer(new SandBox2D());
 	}
 
 	~SandBox()

@@ -13,6 +13,9 @@ namespace TinyEngine
 
 		virtual void Bind() const = 0;
 		virtual void Unbind() const = 0;
+		virtual void SetMat4f(const std::string& name, const glm::mat4& matrix) = 0;
+		virtual void Set4f(const std::string& name, float v0, float v1, float v2, float v3) = 0;
+		virtual void Set1i(const std::string& name, int value) = 0;
 
 		static Ref<Shader> Create(const std::string& filePath);
 	};

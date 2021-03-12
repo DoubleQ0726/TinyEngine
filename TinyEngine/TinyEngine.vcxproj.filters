@@ -25,8 +25,8 @@
     <Filter Include="src\Tiny\ImGui">
       <UniqueIdentifier>{4A19CFE0-36E7-C2E6-1F7B-330D0BE89E4B}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Tiny\Renender">
-      <UniqueIdentifier>{22C0A7B0-8ED6-A546-D74D-316843A376CE}</UniqueIdentifier>
+    <Filter Include="src\Tiny\Render">
+      <UniqueIdentifier>{8F06350F-FB91-A2D3-04A3-25C870ADFED3}</UniqueIdentifier>
     </Filter>
     <Filter Include="vecdor">
       <UniqueIdentifier>{886B7B22-740D-A6F8-5DC8-B94C49092D49}</UniqueIdentifier>
@@ -128,6 +128,36 @@
     </ClInclude>
     <ClInclude Include="src\Tiny\ImGui\ImGuiLayer.h">
       <Filter>src\Tiny\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Buffer.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\GraphicsContext.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\OrthographicCamera.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\OrthographicCameraController.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\RenderCommand.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Renderer.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\RendererAPI.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Shader.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Texture.h">
+      <Filter>src\Tiny\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\VertexArray.h">
+      <Filter>src\Tiny\Render</Filter>
     </ClInclude>
     <ClInclude Include="src\TinyPch.h">
       <Filter>src</Filter>
@@ -1374,36 +1404,7 @@
     <ClInclude Include="vecdor\stb_image\stb_image.h">
       <Filter>vecdor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Tiny\Render\Buffer.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\GraphicsContext.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\OrthographicCamera.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\OrthographicCameraController.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\RenderCommand.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\Renderer.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\RendererAPI.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\Shader.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\Texture.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Tiny\Render\VertexArray.h">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClInclude>
+    <ClInclude Include="src\Tiny\Render\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
@@ -1451,38 +1452,39 @@
     <ClCompile Include="src\Tiny\ImGui\ImGuiLayer.cpp">
       <Filter>src\Tiny\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Buffer.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\OrthographicCamera.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\OrthographicCameraController.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\RenderCommand.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Renderer.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\RendererAPI.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Shader.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Texture.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\VertexArray.cpp">
+      <Filter>src\Tiny\Render</Filter>
+    </ClCompile>
     <ClCompile Include="src\TinyPch.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="vecdor\stb_image\stb_image.cpp">
       <Filter>vecdor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Tiny\Render\Buffer.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\OrthographicCamera.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\OrthographicCameraController.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\RenderCommand.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\Renderer.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\RendererAPI.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\Shader.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\Texture.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tiny\Render\VertexArray.cpp">
-      <Filter>src\Tiny\Renender</Filter>
-    </ClCompile>
+    <ClCompile Include="src\Tiny\Render\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

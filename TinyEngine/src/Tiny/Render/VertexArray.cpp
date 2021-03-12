@@ -5,7 +5,7 @@
 
 namespace TinyEngine
 {
-	VertexArray* VertexArray::Create()
+	Ref<VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -16,7 +16,7 @@ namespace TinyEngine
 		}
 		case RendererAPI::API::OpenGL:
 		{
-			return new TinyEngine::OpenGLVertexArray();
+			return std::make_shared<OpenGLVertexArray>();
 		}
 		default:
 			break;

@@ -20,17 +20,21 @@ namespace TinyEngine
 		void Bind() const override;
 		void Unbind() const override;
 
-		//Set Uniforms
-		void SetUniform1i(const std::string& name, int value);
-		void SetUniform1f(const std::string& name, float value);
-		void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-		void SetUniformMat4f(const std::string& name, const glm::mat4& matrix);
+		void SetMat4f(const std::string& name, const glm::mat4& matrix) override;
+		void Set4f(const std::string& name, float v0, float v1, float v2, float v3) override;
+		void Set1i(const std::string& name, int value) override;
 
 	private:
 		unsigned int GetUniformLocation(const std::string& name);
 		ShaderProgramSource ParseShader(const std::string& filePath);
 		unsigned int CompileShader(unsigned int type, const std::string& source);
 		unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
+
+		//Set Uniforms
+		void SetUniform1i(const std::string& name, int value);
+		void SetUniform1f(const std::string& name, float value);
+		void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+		void SetUniformMat4f(const std::string& name, const glm::mat4& matrix);
 	private:
 		unsigned int m_RenderID;
 		std::string m_FilePath;

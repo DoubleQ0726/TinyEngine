@@ -13,6 +13,7 @@
 
 //---------Renderer----------
 #include "Tiny/Render/Renderer.h"
+#include "Tiny/Render/Renderer2D.h"
 #include "Tiny/Render/RenderCommand.h"
 #include "Tiny/Render/Buffer.h"
 #include "Tiny/Render/Shader.h"
@@ -21,8 +22,4 @@
 #include "Platform/OpenGL/OpenGLShader.h"
 #include "Tiny/Render/OrthographicCameraController.h"
 #include "Tiny/Render/OrthographicCamera.h"
-//------------------------------
-
-//---------Entry Point----------
-#include "Tiny/Core/EntryPoint.h"
 //------------------------------
