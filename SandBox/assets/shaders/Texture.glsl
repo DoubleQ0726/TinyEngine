@@ -3,9 +3,12 @@
 
 layout(location = 0) in vec3 a_Position;
 layout(location = 0) in vec2 a_TexCoord;
+
 uniform mat4 u_ViewProjection;
 uniform mat4 u_Transform;
+
 out vec2 u_TexCoord;
+
 void main()
 {
 	u_TexCoord = a_TexCoord;
@@ -14,12 +17,15 @@ void main()
 
 #shader fragment
 #version 330 core
+
 in vec2 u_TexCoord;
-out vec4 color;
+
 uniform sampler2D u_Texture;
 uniform vec4 u_Color;
 
+out vec4 color;
+
 void main()
 {
-	color = texture(u_Texture, u_TexCoord);
+	color = texture(u_Texture, u_TexCoord) * u_Color;
 };
