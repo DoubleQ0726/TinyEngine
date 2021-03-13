@@ -160,6 +160,7 @@
     <ClInclude Include="src\Tiny\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Tiny\Core\Timestep.h" />
     <ClInclude Include="src\Tiny\Core\Window.h" />
+    <ClInclude Include="src\Tiny\Debug\Instrumentor.h" />
     <ClInclude Include="src\Tiny\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Tiny\Events\Event.h" />
     <ClInclude Include="src\Tiny\Events\KeyEvent.h" />

@@ -21,8 +21,13 @@ void SandBox2D::OnDetach()
 
 void SandBox2D::OnUpdate(TinyEngine::Timestep ts)
 {
+	TI_PROFILE_FUNCTION();
+
 	//Update
-	m_CameraController.OnUpdate(ts);
+	{
+		TI_PROFILE_SCOPE("CameraController::Update");
+		m_CameraController.OnUpdate(ts);
+	}
 
 	//Render
 	TinyEngine::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1.0f });

@@ -13,6 +13,9 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include "Tiny/Core/Log.h"
+#include "Tiny/Debug/Instrumentor.h"
+
 #ifdef TI_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

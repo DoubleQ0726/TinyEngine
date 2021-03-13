@@ -6,12 +6,17 @@ extern TinyEngine::Application* TinyEngine::CreateApplication();
 int main(int argc, char** argv)
 {
 	TinyEngine::Log::Init();
-	TI_CORE_WARN("Initialized Log!");
-	int a = 5;
-	TI_INFO("Hello Var={0}", a);
+	TI_PROFILE_BEGIN_SESSION("Satrtup", "TinyProfile-Satrtup.json");
 	auto app = TinyEngine::CreateApplication();
+	TI_PROFILE_END_SESSION();
+
+	TI_PROFILE_BEGIN_SESSION("Runtime", "TinyProfile-Runtime.json");
 	app->Run();
+	TI_PROFILE_END_SESSION();
+
+	TI_PROFILE_BEGIN_SESSION("Shutdown", "TinyProfile-Shdow.json");
 	delete app;
+	TI_PROFILE_END_SESSION();
 }
 #endif // TI_PLATFORM_WINDOWS
 

@@ -1405,6 +1405,7 @@
       <Filter>vecdor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Tiny\Render\Renderer2D.h" />
+    <ClInclude Include="src\Tiny\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">

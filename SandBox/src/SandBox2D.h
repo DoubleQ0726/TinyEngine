@@ -19,4 +19,5 @@ private:
 	TinyEngine::OrthographicCameraController m_CameraController;
 	TinyEngine::Ref<TinyEngine::Texture2D> m_ChernoLogoTexture;
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+
 };
