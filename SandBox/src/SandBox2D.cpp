@@ -21,11 +21,11 @@ void SandBox2D::OnDetach()
 
 void SandBox2D::OnUpdate(TinyEngine::Timestep ts)
 {
-	TI_PROFILE_FUNCTION();
+	//TI_PROFILE_FUNCTION();
 
 	//Update
 	{
-		TI_PROFILE_SCOPE("CameraController::Update");
+		//TI_PROFILE_SCOPE("CameraController::Update");
 		m_CameraController.OnUpdate(ts);
 	}
 
@@ -35,7 +35,7 @@ void SandBox2D::OnUpdate(TinyEngine::Timestep ts)
 	TinyEngine::Renderer2D::BeginScene(m_CameraController.GetCamera());
 	TinyEngine::Renderer2D::DrawQuad({ -1.0f, 0.0f }, { 0.8f, 0.8f }, {0.8f, 0.2f, 0.3f, 1.0f});
 	TinyEngine::Renderer2D::DrawQuad({ 0.5f, -0.5f }, { 0.5f, 0.75f }, m_SquareColor);
-	TinyEngine::Renderer2D::DrawQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, m_ChernoLogoTexture);
+	TinyEngine::Renderer2D::DrawRotatedQuad({ 0.0f, 0.0f, -0.1f }, { 10.0f, 10.0f }, glm::radians(45.0f), m_ChernoLogoTexture, 10.0f);
 	TinyEngine::Renderer2D::EndScene();
 }
 

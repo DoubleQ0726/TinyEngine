@@ -50,6 +50,11 @@ namespace TinyEngine
 		SetUniform1i(name, value);
 	}
 
+	void OpenGLShader::Set1f(const std::string& name, float value)
+	{
+		glUniform1f(GetUniformLocation(name), value);
+	}
+
 	void OpenGLShader::SetUniform1i(const std::string& name, int value)
 	{
 		glUniform1i(GetUniformLocation(name), value);
